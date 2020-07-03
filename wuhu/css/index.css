@@ -1,0 +1,399 @@
+body {
+    line-height: 1.15;
+    font-size: 0.5rem;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: 0 0 / cover;
+    background-color: #101129;
+}
+
+.container {
+    width: 100%;
+    height: 67.5rem;
+    display: flex;
+    /* justify-content: space-between; */
+}
+::-webkit-scrollbar {width:5px;height:5px;position:absolute}
+::-webkit-scrollbar-thumb {background-color:#5bc0de}
+::-webkit-scrollbar-track {background-color:#ddd}
+.canvas{position: absolute; width:100%; left: 0; top: 0; height: 99%; z-index: 1;}
+
+.allnav{height: calc(100% - 30px);}
+.loading{position:fixed; left:0; top:0; font-size:18px; z-index:100000000;width:100%; height:100%; background:#1a1a1c; text-align:center;}
+.loadbox{position:absolute; width:160px;height:150px; color: #aaa; left:50%; top:50%; margin-top:-100px; margin-left:-75px;}
+.loadbox img{ margin:10px auto; display:block; width:40px;}
+.container .container-left {
+    float: left;
+    display: flex;
+    width: 33.3%;
+    box-sizing: border-box;
+    margin-top: 5rem;
+    margin-left: 1rem;
+    flex-direction: column;
+    z-index: 100;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body text {
+    color: #FFFFFF;
+    font-family:"宋体";
+    font-size: 1rem;
+    font-weight: 700;
+    z-index: 100;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .container-left:first-child {
+    margin-top: 100px;
+} */
+
+.w {
+    /* 限定大小 */
+    /* min-width: 64rem; */
+    max-width: 120rem;
+    min-height: 48.75rem;
+    margin: 0 auto;
+    background: url(../images/logo9.png) no-repeat 0 0 / contain;
+    display: flex;
+}
+
+.panel li a {
+    color: #6BEFFF ;
+    font-size: 1rem;
+    font-family: "宋体";
+    z-index:100;
+}
+
+.title1 li a {
+    color: #6BEFFF ;
+    font-size: 1rem;
+    z-index:100;
+}
+
+.container-left .left-1 {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-bottom: .625rem;
+    /* padding: 10px; */
+    width: 37.5rem;
+    border-radius: 5%;
+}
+
+.container-left .left-1 .panel .pannel-title {
+    float: right;
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+
+.panel-right {
+    display: flex;
+}
+
+.content {
+    display: flex;
+    margin: 0 auto;
+}
+
+#paypie {
+    margin: 0 auto;
+}
+
+.container-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 33.3%;
+    margin: 0 0.5rem;
+}
+.container .container-left .panel text{
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+
+
+a::before {
+    content: "|";
+    color: #FFFFFF;
+    padding: 0 .3125rem;
+}
+
+
+/* .container-right{
+    margin-top: 50%;
+} */
+
+
+/* .count {
+    border: 1px solid #b0b0b0;
+}
+
+.count-head {
+    display: flex;
+}
+
+.count-head span {
+    height: 40px;
+    line-height: 40px;
+} */
+
+
+
+.data-title{
+    width: 100%;
+    height: 8.5rem;
+    box-sizing: border-box;
+}
+.data-title .title-center{
+    text-align: center;
+    height: 7.5rem;
+    line-height: 7.5rem;
+    letter-spacing: .25rem;
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    text-shadow: .1875rem .1875rem .1875rem rgba(0, 0, 0, .3);
+}
+.container-bottom .count {
+    box-sizing: border-box;
+    display: flex;
+    /* margin-top: 8.5rem; */
+    flex-direction: row;
+    width: 37.82125rem;
+    height: 13.75rem;
+    /* border: 1px solid #6BEFFF ; */
+    z-index: 100;
+    /* border-radius: 3%; */
+}
+
+.count .count-txt {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    text-align: center;
+    letter-spacing: .1875rem;
+    font-size: .9375rem;
+}
+
+.order {
+    width: 37.82125rem;
+    margin-top: 1.25rem;
+    /* border: 1px solid #b0b0b0; */
+    border-radius: 5%;
+    position: relative;
+}
+
+.panel1 {
+    box-sizing: border-box;
+    border: .125rem solid red;
+    border-image: url(../images/border.png) 51 38 21 132;
+    border-width: 1rem 1rem 1rem 1rem;
+    position: relative;
+    z-index:100;
+}
+.count .count-txt h3>span{
+    font-family:"宋体";
+}
+.inner {
+    /* 装内容 */
+    /* height: 60px; */
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
+    bottom: -1.5rem;
+    left: -1.5rem;
+    padding: 0.5rem 0.5rem;
+}
+
+.title {
+    display: flex;
+}
+
+.title .title1 {
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+
+.title .title1 a {
+    color: #6BEFFF ;
+}
+
+.order .title text {
+    float: left;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+
+
+/* .breadcrumb{
+    height: 50px;
+    line-height: 50px;
+    background-color: #ffffff;
+    text-align: center;
+} */
+
+.order-content {
+    display: flex;
+}
+
+#receive #weekcount {
+    margin: 0 auto;
+}
+
+#pay {
+    margin: 0 auto;
+}
+
+#orderline {
+    margin: 0 auto;
+}
+
+.bottom {
+    display: flex;
+    /* box-sizing: border-box; */
+    margin-top: 1.25rem;
+    /* width: 37.82125rem; */
+    position: relative;
+}
+
+.bottom .bottom-left {
+    margin: 0 auto;
+    width: 35.85rem; 
+    box-sizing: border-box;
+    border-radius: 5%;
+}
+
+.bottom .bottom-left text {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+.order .panel1 .title1{
+    font-family: "宋体";
+}
+#weekcount {
+    margin: 0 auto;
+}
+.bottom .panel1 .income_color {
+    font-family: "宋体";
+}
+.bargin text {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+.weather{ 
+    position:absolute; 
+    right:.3rem; top:0.4rem; 
+    line-height: .75rem;
+}
+.weather span{
+    color:#6BEFFF ; 
+    font-size: .18rem;
+    padding-right: .1rem;
+}
+.weather1 { 
+    position: absolute;
+    top:0.01rem;
+    right: 15rem;
+    color: #6BEFFF ;
+}
+.bargin {
+    width: 37.5rem;
+    box-sizing: border-box;
+    border-radius: 5%;
+}
+
+.container-right {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    margin-right: 1.875rem;
+}
+
+.container-right .entry {
+    width: 37.5rem;
+    box-sizing: border-box;
+    border-radius: 5%;
+}
+
+.entry text {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+.bargin a{
+    height: 2.5rem;
+    line-height: 2.5rem;
+    color:#6BEFFF ;
+    z-index: 100;
+}
+.btn-group {
+    margin-left: 1.25rem;
+    background-color: red;
+}
+
+#entry #owe {
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+    display: flex;
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+
+.owe {
+    width: 37.5rem;
+    box-sizing: border-box;
+    border-radius: 5%;
+}
+
+.owe text {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+
+.income_color a {
+    color: #6BEFFF ;
+}
+
+.active1 {
+    color: white !important;
+}
+
+
+/* .panel22{
+    color:#ffffff !important;
+} */
+
+
+/* .center:first-child {
+    float: left;
+}
+
+.center .right {
+    float: right;
+} */

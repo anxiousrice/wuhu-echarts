@@ -1,0 +1,731 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地图数据可视化_大数据html模板 - www.bootstrapmb.com</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./fonts/icomoon.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <script src="chart_js/echarts.min.js"></script>
+    <script src='chart_js/jquery.min.js'></script>
+    <script src='chart_js/data.js'></script>
+</head>
+
+<body>
+    <script>
+        	$(window).load(function(){  
+             $(".loading").fadeOut()
+            })  	
+    </script>
+    <div class="canvas" style="opacity: .2">
+        <iframe frameborder="0" src="chart_js/index.html" style="width: 100%; height: 100%"></iframe>
+        </div>
+    <div class="loading">
+      <div class="loadbox"> <img src="images/loading.gif"> 页面加载中... </div>
+    </div>
+    <div class='w' style="z-index: 100;" id='app'>
+        <div class='container'>
+            <div class='container-left'>
+                <div class="panel1" style="margin-bottom: 1.1rem;">
+                    <div class='left-1'>
+                        <div class='panel'>
+                            <text>应收实收分析</text>
+                            <div class='pannel-title' id='panel_div'>
+                                <ul class="panel-right">
+                                    <li>
+                                        <a href="javascript:;" class='all' style='margin-right: .3125rem;'>全部</a>
+                                        <a href="javascript:;" class='inter' data-key="inner">路内</a>
+                                        <a href="javascript:;" class='active1 oute' data-key="outer">路外</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='content'>
+                            <div id='receive' style='width: 37.5rem; height: 15.625rem;'></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel1" style="margin-bottom: 1.1rem;">
+                    <div class='left-1'>
+                        <div class='panel'>
+                            <text>缴费方式分析</text>
+                            <div class='pannel-title' id="pay_div">
+                                <ul class="panel-right">
+                                    <li>
+                                        <a href="javascript:;" style='margin-right: .3125rem;' class="pay-count weektotal">全部</a>
+                                        <a class='panel111' href="javascript:;" data-key="inner">路内</a>
+                                        <a class='panel222 active1' href="javascript:;" data-key="outer">路外</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='content'>
+                            <div id='payline' style='width: 18.75rem;height: 15.625rem;'></div>
+                            <div id='paypie' style='width: 18.75rem; height: 15.625rem;'></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="now_pay_div">
+                    <div class="panel1">
+                        <div class='left-1'>
+                            <div class='panel'>
+                                <text>实时收益曲线</text>
+                                <div class='pannel-title'>
+                                    <ul class="panel-right">
+                                        <li>
+                                            <a href="javascript:;" class='panelTxt3' style='margin-right: .3125rem;'>全部</a>
+                                            <a href="javascript:;" class='panel11' data-key="inner">路内</a>
+                                            <a href="javascript:;" class='panel22 active1' data-key="outer">路外</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class='content'>
+                                <div id='pay' style='width: 37.5rem; height: 13.75rem;'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class='container-bottom'>
+                <div class="data-title">
+                    <div class="title-center "></div>
+                </div>
+                <div class='count'>
+                    <div class="count-txt">
+                        <h3 style="color: #EDED02" >今日总营收</h3>
+                        <span style="color: #EDED02"class='totalCount'></span>
+                        <h3 style="color: #EDED02" >今日总订单数</h3>
+                        <span style="color: #EDED02" class="totalRecord"></span>
+                    </div>
+                    <div class="count-txt">
+                        <h3 style="color:#37E324">路内营收</h3>
+                        <span class='inside' style="color:#37E324"></span>
+                        <h3 style="color:#37E324">路内总订单数</h3>
+                        <span class='insidecount' style="color:#37E324"></span>
+                    </div>
+                    <div class="count-txt">
+                        <h3 style="color: #DE2B3E">路外营收</h3>
+                        <span class='outside' style="color: #DE2B3E;"></span>
+                        <h3 style="color: #DE2B3E">路外总订单数</h3>
+                        <span class='outcount' style="color:#DE2B3E"></span>
+                    </div>
+                </div>
+
+                <div class='order'>
+                    <div class='panel1'>
+                        <div class='title' id='order_div'>
+                            <text>订单笔数及金额</text>
+                            <div class="title1" style="height: 2.5rem;line-height: 2.5rem;">
+                                <a style='margin-right: .3125rem;' class="pay-count" href="javascript:;">全部</a>
+                                <a href="javascript:;" class='panel1111' data-key="inner">路内</a>
+                                <a href="javascript:;" class='panel2222 active1' data-key="outer">路外</a>
+                            </div>
+                        </div>
+                        <div class='order-content'>
+                            <div id='orderline' style="width: 34.375rem;height:18.75rem; margin: 0 auto;"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class='bottom' id='bottom_div'>
+                    <div class='panel1'>
+                        <div class='bottom-left'>
+                            <div style="display: flex;">
+                                <text>近七日收益排行</text>
+                                <div class="title1" style="height: 2.5rem;line-height: 2.5rem;text-align: center; margin-left: 3.5rem;">
+                                    <ul>
+                                        <li class="income_color">
+                                            <a href="javascript:;" style='margin-right: .3125rem;' class="pay-count11">全部</a>
+                                            <a href="javascript:;" class='income-inner' data-key="inner">路内</a>
+                                            <a href="javascript:;" class='active1 income-outer' data-key="outer">路外</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id='weekcount' style="width: 34.375rem;height: 16.35rem;margin: 0 auto;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class='container-right'>
+                <div class="weather">
+                    <span id="showTime"></span>
+                </div>
+                <div class="weather1">
+                    <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=1" allowtransparency="true" width="330" height="20" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                </div>
+                <script>
+                 var t = null;
+                t = setTimeout(time,1000);//開始运行
+                function time()
+                {
+                   clearTimeout(t);//清除定时器
+                   dt = new Date();
+                    var y=dt.getFullYear();
+                    var mt=dt.getMonth()+1;
+                    var day=dt.getDate();
+                   var h=dt.getHours();//获取时
+                   var m=dt.getMinutes();//获取分
+                   var s=dt.getSeconds();//获取秒
+                   document.getElementById("showTime").innerHTML = y+"年"+mt+"月"+day+"-"+h+"时"+m+"分"+s+"秒";
+                   t = setTimeout(time,1000); //设定定时器，循环运行     
+                } 
+                 </script>
+                <div class="panel1" style="margin-bottom: 1.2rem;">
+                    <div class='bargin'>
+                        <text>实收减免情况分析</text>
+                        <a href="javascript:;" class="active1 in">路内</a>
+                        <a href="javascript:;" class='out'>路外</a>
+                        <div id='bargin' style="width: 37.5rem;height: 15.625rem;"></div>
+                    </div>
+                </div>
+
+                <div class="panel1" style="margin-bottom: 1.2rem;">
+                    <div class='entry'>
+                        <text>路内停车欠费情况趋势</text>
+                        <text style="float: right;color:#6BEFFF ;">仅路内</text>
+                        <!-- <div class='center'>
+                            <span>总金额<text style="color: red;margin-left: .3125rem;">100</text></span>
+                            <span style="margin-left: 100px;">未录入<text style="color: red;margin-left: .3125rem;">100</text></span>
+                        </div> -->
+                        <div id='entry' style="width: 37.5rem;height: 15.625rem;"></div>
+                    </div>
+                </div>
+
+                <div class="panel1">
+                    <div class='owe'>
+                        <text>车辆录入/收费率趋势</text>
+                        <text style="float: right;color:#6BEFFF ;">仅路内</text>
+                        <div id='owe' style='width: 37.5rem;height:15.625rem;'></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"></script> -->
+<!-- <script>
+    var myChart = echarts.init(document.getElementById('receive'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '实时应收实收分析',
+            left: 'center',
+            textStyle: {
+                width: "100%",
+                color: "#6BEFFF ",
+                fontSize: '15'
+            }
+
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            x: 'right',
+            right: '0',
+            orient: 'vertical',
+            data: ['实收', '应收'],
+            textStyle: {
+                color: '#ccc'
+            }
+
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '5%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#6BEFFF "
+                }
+            },
+            name: '结算日期',
+            nameLocation: 'center',
+        },
+        yAxis: {
+            type: 'value',
+            name: '金额',
+            nameTextStyle: {
+                color: '#6BEFFF '
+            },
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#6BEFFF "
+                }
+            },
+        },
+        series: [{
+            name: '应收',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+        }, {
+            name: '实收',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script> -->
+<!-- <script>
+    (function() {
+        var myChart = echarts.init(document.getElementById('payline'));
+        var option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['微信', '支付宝', '现金'],
+                textStyle: {
+                    color: '#ccc'
+                }
+
+            },
+            grid: {
+                left: '3%',
+                right: '10%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                axisLabel: {
+                    color: '#6BEFFF '
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#4c9b8d"
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    color: '#6BEFFF '
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: "#4c9b8d"
+                    }
+                },
+            },
+            series: [{
+                name: '微信',
+                type: 'line',
+                stack: '总量',
+                data: [120, 132, 101, 134, 90, 230, 210]
+            }, {
+                name: '支付宝',
+                type: 'line',
+                stack: '总量',
+                data: [220, 182, 191, 234, 290, 330, 310]
+            }, {
+                name: '现金',
+                type: 'line',
+                stack: '总量',
+                data: [150, 232, 201, 154, 190, 330, 410]
+            }]
+        };
+        myChart.setOption(option);
+        var data = [{
+            name: '微信',
+            data: [210, 132, 101, 134, 90, 230, 120]
+        }, {
+            name: '支付宝',
+            data: [310, 182, 191, 234, 290, 330, 220]
+        }, {
+            name: '现金',
+            data: [410, , 232, 201, 154, 190, 330, 150]
+        }]
+        $("#pay_div li a").on("click", function() {
+            var key = $(this).attr('data-key');
+            option.series[0].data = data[key];
+            myChart.setOption(option)
+        })
+
+    })();
+</script> -->
+<!-- <script>
+    var myChart = echarts.init(document.getElementById('receive_pie'));
+    myChart.setOption({
+        series: [{
+            name: '支付来源',
+            type: 'pie',
+            radius: '55%',
+            data: [{
+                    value: 600,
+                    name: '支付'
+                }, {
+                    value: 400,
+                    name: '未收'
+                },
+
+            ],
+            label: {
+                fontSize: 10
+            },
+            //引导线
+            labelLine: {
+                length: 4,
+                length2: 4
+            },
+            roseType: 'angle',
+            itemStyle: {
+                normal: {
+                    shadowBlur: 200,
+                }
+            }
+        }]
+    })
+</script> -->
+<!-- <script>
+    var myChart = echarts.init(document.getElementById('paypie'))
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+            orient: 'horizontal',
+            x: "left",
+            data: ['微信', '支付宝', '现金'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        grid: {
+            top: '10%',
+            left: "3%",
+            right: "3%",
+        },
+        series: [{
+            name: '访问来源',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '30',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: [{
+                value: 335,
+                name: '微信'
+            }, {
+                value: 310,
+                name: '支付宝'
+            }, {
+                value: 234,
+                name: '现金'
+            }]
+        }]
+    }
+    myChart.setOption(option);
+</script> -->
+<!-- <script>
+    var option = {
+        xAxis: {
+            type: 'category',
+            data: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#6BEFFF "
+                }
+            },
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#6BEFFF "
+                }
+            },
+        },
+        // 图表边界控制
+        grid: {
+            // 距离 上右下左 的距离
+            left: '0',
+            right: '3%',
+            bottom: '3%',
+            top: '5%',
+            // 大小是否包含文本【类似于boxsizing】
+            containLabel: true,
+            //显示边框
+        },
+        series: [{
+            data: [11, 12, 13, 12, 233, 333, 2233, 12121, 12121, 121, 33, 33, 222, 333, 32, 23, 23, 32, 23, 23, 23, 232, 32, 23],
+            type: 'line'
+        }]
+    };
+    var myChart = echarts.init(document.getElementById('pay'))
+    myChart.setOption(option);
+    var data = {
+        inner: [11, 12, 13, 12, 233, 333, 2233, 12121, 12121, 121, 33, 33, 222, 333, 32, 23, 23, 32, 23, 23, 23, 232, 32, 23],
+        outer: [23, 32, 232, 23, 23, 23, 32, 333, 222, 33, 11, 12, 13, 12, 233, 333, 2233, 12121, 12121, 121, 33, 233, 23, 45]
+    }
+    $("#now_pay_div .panel  a").on("click", function() {
+        var key = $(this).attr('data-key');
+        console.log(data[key]);
+        option.series[0].data = data[key];
+        myChart.setOption(option)
+    });
+</script> -->
+<!-- <script>
+    var myChart = echarts.init(document.getElementById('weekcount'))
+    var option = option = {
+        // 工具提示
+        tooltip: {
+            // 触发类型  经过轴触发axis  经过轴触发item
+            trigger: 'item',
+            // 轴触发提示才有效
+            axisPointer: {
+                // 默认为直线，可选为：'line' 线效果 | 'shadow' 阴影效果       
+                type: 'shadow'
+            }
+        },
+        // 图表边界控制
+        grid: {
+            // 距离 上右下左 的距离
+            left: '0',
+            right: '3%',
+            bottom: '3%',
+            top: '5%',
+            // 大小是否包含文本【类似于boxsizing】
+            containLabel: true,
+            //显示边框
+            show: true,
+            //边框颜色
+            borderColor: 'rgba(0, 240, 255, 0.3)'
+        },
+        // 控制x轴
+        xAxis: [{
+            // 使用类目，必须有data属性
+            type: 'category',
+            // 使用 data 中的数据设为刻度文字
+            data: ['路内停车场', '梅河中路停车场', '高峰路停车场', '桃溪路停车场', '水杉路停车场'],
+            // 刻度设置
+
+            //文字
+            axisLabel: {
+                interval: 0,
+                rotate: 0,
+                color: '#6BEFFF '
+            }
+        }],
+        // 控制y轴
+        yAxis: [{
+            // 使用数据的值设为刻度文字
+            type: 'value',
+
+            axisTick: {
+                // true意思：图形在刻度中间
+                // false意思：图形在刻度之间
+                alignWithLabel: false,
+                show: false
+            },
+            //文字
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            splitLine: {
+                lineStyle: {
+                    color: 'rgba(0, 240, 255, 0.3)'
+                }
+            },
+        }],
+        // 控制x轴
+        series: [{
+            // series配置
+            // 颜色
+            itemStyle: {
+                // 提供的工具函数生成渐变颜色
+                color: new echarts.graphic.LinearGradient(
+                    // (x1,y2) 点到点 (x2,y2) 之间进行渐变
+                    0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#00fffb'
+                        }, // 0 起始颜色
+                        {
+                            offset: 1,
+                            color: '#0061ce'
+                        } // 1 结束颜色
+                    ]
+                )
+            },
+            // 图表数据名称
+            name: '车场',
+            // 图表类型
+            type: 'bar',
+            // 柱子宽度
+            barWidth: '50%',
+            // 数据
+            data: [901, 414, 116, 58, 37]
+        }]
+    };
+    myChart.setOption(option)
+</script> -->
+<!-- <script>
+    var myChart2 = echarts.init(document.getElementById('entry'))
+    var option = {
+        title: {
+            text: "车辆录入率分析",
+            left: "center",
+            top: '5',
+            textStyle: {
+                width: "100%",
+                color: "#6BEFFF ",
+                fontSize: '15'
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#6BEFFF "
+                }
+            }
+        },
+        grid: {
+            left: '0%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        legend: {
+            data: ['车辆录入率分析']
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            name: '录入率',
+            nameTextStyle: {
+                color: "#6BEFFF "
+            },
+        },
+        series: [{
+            data: [82, 93, 90, 93, 95, 85, 93],
+            type: 'line'
+        }]
+    };
+    myChart2.setOption(option)
+    window.addEventListener("resize", function() {
+        myChart2.resize();
+    })
+</script>
+
+<script>
+    var myChart3 = echarts.init(document.getElementById('owe'))
+    var option = {
+
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#6BEFFF "
+                }
+            }
+        },
+        grid: {
+            left: '0%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        yAxis: {
+            type: 'value',
+            name: '欠费金额',
+            nameTextStyle: {
+                color: '#6BEFFF '
+            },
+            axisLabel: {
+                color: '#6BEFFF '
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#6BEFFF "
+                }
+            }
+        },
+        series: [{
+            name: '欠费金额',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+        }]
+    };
+    myChart3.setOption(option)
+    window.addEventListener("resize", function() {
+        myChart3.resize();
+    })
+</script> -->
+
+<script src='chart_js/index.js'></script>
+<script src='chart_js//vue.js'></script>
+
+</html>
